@@ -1,4 +1,10 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
 const { database } = require('./keys')
-mongose.connect(database.URI)
+
+mongoose.connect(database.URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
+    .then(db => console.log('DB is connectd'))
+    .catch(err => console.error(err));
